@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SOS</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include Bootstrap JavaScript and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        /* Style the SOS button as a red circle */
+        input[type="submit"] {
+            width: 150px; /* Adjust the size as needed */
+            height: 150px; /* Same as width for a circle */
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 50%; /* Makes it a circle */
+            font-size: 18px; /* Adjust the font size as needed */
+            cursor: pointer;
+            margin-top: 20px; /* Adjust the margin as needed */
+            text-align: center;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    
+    <form method="POST">
+        <label for="sender_number">Sender's Number:</label>
+        <input type="text" name="sender_number" required><br><br>
+        
+        <label for="emergency_contacts">Emergency Contacts (comma-separated):</label>
+        <input type="text" name="emergency_contacts" required><br><br>
+        
+        <input class="sos" type="submit" value="Send SOS">
+    </form>
+
+    <h2>Emergency Contacts:</h2>
+    <ul>
+        {% for contact in emergency_contacts %}
+            <li>{{ contact }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
