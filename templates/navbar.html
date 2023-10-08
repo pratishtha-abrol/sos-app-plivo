@@ -14,6 +14,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="/signup">Signup</a>
             </li>
+            {% if session['user_id'] %}
+            <li class="nav-item">
+                <a class="nav-link" href="/add_contact">Add Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/remove_contact">Remove Contact</a>
+            </li>
+            {% endif %}
         </ul>
     </div>
 </nav>

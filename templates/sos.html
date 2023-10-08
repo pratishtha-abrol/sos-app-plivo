@@ -28,23 +28,26 @@
 </head>
 <body>
     {% include 'navbar.html' %}
-    
+    {% if user_id %}
+        <!-- Display the SOS button if the user is logged in -->
+        <form method="POST">
+            <input class="sos" type="submit" value="Send SOS">
+        </form>
+    {% else %}
     <form method="POST">
         <label for="sender_number">Sender's Number:</label>
         <input type="text" name="sender_number" required><br><br>
+
+        <label for="sender_name">Full Name:</label>
+        <input type="text" name="sender_name" required><br><br>
         
         <label for="emergency_contacts">Emergency Contacts (comma-separated):</label>
         <input type="text" name="emergency_contacts" required><br><br>
         
         <input class="sos" type="submit" value="Send SOS">
     </form>
+    {% endif %}
 
-    <h2>Emergency Contacts:</h2>
-    <ul>
-        {% for contact in emergency_contacts %}
-            <li>{{ contact }}</li>
-        {% endfor %}
-    </ul>
 </body>
 </html>
 

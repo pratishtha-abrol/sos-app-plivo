@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Signup</title>
+    <title>Remove Emergency Contact</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -12,23 +12,18 @@
 </head>
 <body>
     {% include 'navbar.html' %}
+
     
     <form method="POST">
-        <h1>Signup</h1>
-        <!-- Add signup form fields here -->
-        <label for="user_number">Phone Number (with country code):</label>
-        <input type="text" name="user_number" required><br><br>
-
-        <label for="user_name">Full Name:</label>
-        <input type="text" name="user_name" required><br><br>
+        <h3>Remove Emergency Contact</h3>
+        <label for="remove_contact">Select Contact to Remove:</label>
+        <select name="remove_contact">
+            {% for contact in emergency_contacts %}
+                <option value="{{ contact }}">{{ contact }}</option>
+            {% endfor %}
+        </select><br><br>
         
-        <label for="password">Password:</label>
-        <input type="password" name="password" required><br><br>
-        
-        <label for="confirm_password">Confirm Password:</label>
-        <input type="password" name="confirm_password" required><br><br>
-        
-        <input type="submit" value="Signup">
+        <input type="submit" value="Remove Contact">
     </form>
 </body>
 </html>
